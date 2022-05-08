@@ -1,12 +1,10 @@
-# TODO: Need to make this work if var.ecs_containers is empty.
-
 locals {
-  ecs_widget_definition = [
+  widget_definition = [
     {
-      height = local.widget_height
+      height = var.geo.height
       properties = {
         metrics = [
-          for container in sort(var.ecs_containers) : [
+          for container in sort(var.instances) : [
             "AWS/ECS",
             "CPUUtilization",
             "ServiceName",
@@ -16,7 +14,7 @@ locals {
           ]
         ]
         period  = var.period
-        region  = data.aws_region.current.name
+        region  = var.region
         stacked = false
         stat    = "Average"
         title   = "ECS CPU utilization"
@@ -30,17 +28,17 @@ locals {
         }
       }
       type  = "metric"
-      width = local.widget_width
+      width = var.geo.width
       # TODO: Don't set position if no ECS widgets are defined.
       x = 0
       y = 0
     },
 
     {
-      height = local.widget_height
+      height = var.geo.height
       properties = {
         metrics = [
-          for container in sort(var.ecs_containers) : [
+          for container in sort(var.instances) : [
             "AWS/ECS",
             "MemoryUtilization",
             "ServiceName",
@@ -50,7 +48,7 @@ locals {
           ]
         ]
         period  = var.period
-        region  = data.aws_region.current.name
+        region  = var.region
         stacked = false
         stat    = "Average"
         title   = "ECS memory utilization"
@@ -64,9 +62,9 @@ locals {
         }
       }
       type  = "metric"
-      width = local.widget_width
+      width = var.geo.width
       # TODO: Don't set position if no ECS widgets are defined.
-      x = local.widget_width
+      x = var.geo.width
       y = 0
     }
   ]
