@@ -30,8 +30,8 @@ variable "rds_iops_max" {
   type        = number
 }
 
-variable "rds_instance" {
-  default     = null
-  type        = string
-  description = "RDS instance to be displayed on dashboard"
+variable "rds_instances" {
+  default     = []
+  type        = list(string)
+  description = "List of RDS instances to be displayed on dashboard"
 }

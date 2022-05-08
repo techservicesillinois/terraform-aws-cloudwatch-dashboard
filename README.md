@@ -41,7 +41,9 @@ module "dashboard" {
   rds_free_storage_max = 100 * 1000 * 1000 * 1000   # 100 gb
   rds_iops_max         = 200
 
-  rds_instance = "jrr-db"
+  rds_instances = [
+    "jrr-db"
+  ]
 }
 
 ```
@@ -63,7 +65,7 @@ The following arguments are supported:
 
 * `rds_iops_max` – (Optional) Maximum IOPS value plotted on Y axis. By default, CloudWatch chooses the maximum Y value based on the data values in the period.
 
-* `rds_instance` – (Optional) RDS instance to be displayed on dashboard. **NOTE:** Currently, this module supports only one RDS instance per dashboard.
+* `rds_instances` – (Optional) List of RDS instances to be displayed on dashboard.
 
 Attributes Reference
 --------------------

@@ -1,6 +1,6 @@
-output "dashboard_arn" {
-  value = aws_cloudwatch_dashboard.default.dashboard_arn
-}
+#output "dashboard_arn" {
+# value = aws_cloudwatch_dashboard.default.dashboard_arn
+#}
 
 # TODO: This is for debugging.
 
