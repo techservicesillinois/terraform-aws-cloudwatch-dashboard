@@ -29,6 +29,11 @@ locals {
           }
         }
       }
+      type  = "metric"
+      width = var.geo.width
+      # TODO: Don't set position if no RDS widgets are defined.
+      x = 0
+      y = var.geo.height
     }
   ]
 }
